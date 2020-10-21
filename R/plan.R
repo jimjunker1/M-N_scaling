@@ -5,6 +5,6 @@ the_plan <-
 
     NEON_data = pull_data(),
     
-    NEON_site_metab = met_run(NEON_data),
+    NEON_site_metab = met_run(NEON_data)
     
 )

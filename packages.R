@@ -1,9 +1,10 @@
 ## library() calls go here
 library(conflicted)
+library(tidyverse)
+library(furrr)
 library(dotenv)
 library(drake)
 library(StreamPULSE)
 # library(unitted)
 library(streamMetabolizer)
-library(tidyverse)
-library(furrr)
+'%ni%' <- Negate('%in%')

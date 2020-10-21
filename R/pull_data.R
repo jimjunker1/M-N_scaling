@@ -9,14 +9,14 @@ pull_data <- function() {
   NEON_site_list = StreamPULSE::query_available_data(region = 'all') %>%
     flatten %>% 
     data.frame %>% 
-    filter(contact == 'NEON') 
+    dplyr::filter(contact == 'NEON') 
   
   NEON_site_codes = NEON_site_list %>%
     unite("site_code", region:site, remove = TRUE) %>%
     select(site_code) %>% 
     unlist
   
-  NEON_site_sub = NEON_site_codes[1]
+  NEON_site_sub = NEON_site_codes[NEON_site_codes %ni% c("AK_TOOK-down", "AL_BLWA-down")]
 
   NEON_data_list = map(NEON_site_sub, ~StreamPULSE::request_data(sitecode = .x))
   
